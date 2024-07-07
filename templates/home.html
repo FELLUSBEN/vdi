@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<br />
+<h1 align="center">Personal Computers</h1>
+<ul class="list-group list-group-flush" id="pcs">
+  {% for pc in user.pc %}
+  <li class="list-group-item">
+    <a href="/" onclick="event.target.port={{pc.id+8080}}" target="_blank">{{ pc.data }}</a>
+
+
+    <button type="button" class="close" onClick="stopPc({{ pc.id }})">
+      <span aria-hidden="true">stop</span>
+    </button>
+
+    <button type="button" class="close" onClick="startPc({{ pc.id }})">
+      <span aria-hidden="true">start/ </span>
+    </button>
+
+  </li>
+  {% endfor %}
+</ul>
+
+<form method="POST">
+  <br />
+  <div align="center">
+    <input type="text" id="pc" name="pc" class="form-control" placeholder="Enter new pc name"></input>
+    <br />
+    <button type="submit" class="btn btn-primary">create pc</button>
+  </div>
+</form>
+
+
+
+
+
+{% endblock %}
